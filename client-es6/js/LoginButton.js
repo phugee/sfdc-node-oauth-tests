@@ -14,11 +14,11 @@ class LoginButton extends React.Component {
 
     render() {
         return (
-            <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                    <div class="slds-grid slds-grid--align-center">
-                    	<button onClick={this.handleClick} class="slds-button slds-button--neutral jz--button-save" id="saveSetupInfoButton" aria-live="assertive">
-                        	<span class="">Login to Org62</span>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="center-block">
+                    	<button onClick={this.handleClick} class="btn btn-primary" id="saveSetupInfoButton">
+                        	<span class="">Login to Salesforce</span>
                         </button>
                     </div>
                 </div>

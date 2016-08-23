@@ -1,13 +1,12 @@
 import React from 'react'
-import RestTestButton from './RestTestButton'
+import RestForm from './RestForm'
 
 class Schedule extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            instanceUrl: '',
-            id: '',
+            token: '',
             name: '',
             schedule: {}
         };
@@ -15,21 +14,17 @@ class Schedule extends React.Component {
 
     componentWillMount() {
         this.setState({
-            id: (this.props.id ? this.props.id : ''),
-            name: (this.props.name ? this.props.name : ''),
-            instanceUrl: (this.props.instanceUrl ? this.props.instanceUrl : ''),
-            token: (this.props.token ? this.props.token : '')
+            token: (this.props.token ? this.props.token : ''),
+            name: (this.props.name ? this.props.name : '')
         });
     }
 
     render() {
         return (
-            <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                    <div class="slds-grid slds-grid--align-center">
+            <div class="container-fluid">
+                <div class="row">
                     <h2>Welcome {this.state.name}</h2>
-                    <RestTestButton token={this.state.token} instanceUrl={this.state.instanceUrl} id={this.state.id}/>
-                    </div>
+                    <RestForm token={this.state.token}/>
                 </div>
             </div>
         );
