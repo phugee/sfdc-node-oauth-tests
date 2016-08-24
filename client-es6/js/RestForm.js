@@ -52,12 +52,15 @@ class RestForm extends React.Component {
     handleClick(event) {
         // validate form
         // set loading msg
-        var rest_url = '/query?id=' + this.state.token + '&query=' + this.state.searchString;
+        var rest_url = '/api/query?id=' + this.state.token + '&query=' + this.state.searchString;
         console.log(rest_url);
         let that = this;
         $.ajax({
             method: "GET",
             url: rest_url,
+            headers: {
+                authedxyz: this.state.token
+            },
             dataType: 'json',
             success: function(response) {
                 console.log('success : ' + response);

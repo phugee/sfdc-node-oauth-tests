@@ -14,6 +14,14 @@
     </div>
     <div id="app">
     </div>
+    <script>
+        var req = new XMLHttpRequest();
+        req.open('GET', document.location, false);
+        req.send(null);
+        var headers = req.getAllResponseHeaders().toLowerCase();
+        console.log('wackkoooo');
+        console.log(headers);
+    </script>
     <script src="client.min.js"></script>
 </body>
 </html>

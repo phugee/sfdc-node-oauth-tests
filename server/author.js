@@ -5,25 +5,20 @@ var client = redis.createClient();
 
 var author = {
 
-    setSecret: function(secret) {
-        this.secret = secret;
-    },
-
-    setActiveUser: function(userInfo, oauthInfo) {
+    setActiveUser: function(userInfo, oauthInfo, secret) {
         client.HMSET(userInfo.Id, {
-            'name': userInfo.Name,
             'instanceUrl': oauthInfo.instanceUrl,
             'token': oauthInfo.token
         });
-        var jwtoken = jwt.encode({ iss: userInfo.Id }, this.secret);
+        var jwtoken = jwt.encode({ iss: userInfo.Id }, secret);
         return {
             name: userInfo.Name,
             token: jwtoken
         };
     },
 
-    getActiveUser: function(jwtoken, response) {
-        var id = jwt.decode(jwtoken, this.secret).iss;
+    getActiveUser: function(jwtoken, secret, response) {
+        var id = jwt.decode(jwtoken, secret).iss;
         client.hgetall(id, function(err, object) {
             if(err) {
                 return 'bad';

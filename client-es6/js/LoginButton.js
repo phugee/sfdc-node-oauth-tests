@@ -9,7 +9,7 @@ class LoginButton extends React.Component {
 
     handleClick(event) {
         console.log('somethng happendinn');
-        window.location.href = 'http://localhost:3000/authorize';
+        window.location.href = 'http://localhost:3000/door/authorize';
     }
 
     render() {
