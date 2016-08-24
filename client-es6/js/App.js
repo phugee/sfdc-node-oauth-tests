@@ -18,11 +18,10 @@ class App extends React.Component {
         if(window.location.search.length) {
             console.log('has paramm');
             let url_params = queryString.parse(window.location.search);
+            console.log(url_params);
             this.setState({
                 isLoggedIn: true,
-                id: url_params.id,
                 name: url_params.name,
-                instanceUrl: url_params.instanceUrl,
                 token: url_params.token
             });
         }
@@ -31,10 +30,10 @@ class App extends React.Component {
     render() {
         console.log('this statee');
         console.log(this.state);
-        let markUp = (this.state.isLoggedIn ? <Schedule id={this.state.id} name={this.state.name} instanceUrl={this.state.instanceUrl} token={this.state.token} /> : <LoginButton />);
+        let markUp = (this.state.isLoggedIn ? <Schedule token={this.state.token} name={this.state.name} /> : <LoginButton />);
 
         return (
-            <div class="slds-container--x-large slds-container--center setupBox">
+            <div>
                 {markUp}
             </div>
         );
